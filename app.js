@@ -1,8 +1,8 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
 // var morgan = require('morgan');
-// var path = require("path");
-/*
+var path = require("path");
+
 //importamos el controller y service
 const PaymentController = require("./controllers/controller");
 const PaymentService = require("./controllers/service");
@@ -22,7 +22,7 @@ let vendedor = {
 mercadopago.configure({
   access_token: vendedor.access_token
 });
-*/
+
 
 var port = process.env.PORT || 3000;
 
@@ -51,7 +51,7 @@ app.get("/detail", function (req, res) {
   req.query.page= "item"
   res.render("detail", req.query);
 });
-/*
+
 // Instanciamos el pago
 // (Permitimos que el controller pueda usar el service)
 const PaymentInstance = new PaymentController(new PaymentService()); 
@@ -63,6 +63,6 @@ app.post("/webhook", (req, res) => PaymentInstance.webhook(req, res));
 app.post("/create_preference", function (req, res) {
   PaymentInstance.getMercadoPagoLink(req, res);
 });
-*/
+
 
 app.listen(port);
