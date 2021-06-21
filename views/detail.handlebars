@@ -126,13 +126,13 @@
                   {{unit}}
                 </h3>
               </div>
-                <form action="/payment" method="post">
+                <form action="/create_preference" method="post">
                     <input type="hidden" name="id" value="1234">
                     <input type="hidden" name="img" value="{{img}}">
                     <input type="hidden" name="title" value="{{title}}">
                     <input type="hidden" name="price" value="{{price}}">
                     <input type="hidden" name="unit" value="{{unit}}">
-                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                    <button type="submit" class="mercadopago-button" formmethod="post" id="button-checkout">Pagar</button>
                 </form>
             </div>
           </div>
@@ -142,37 +142,3 @@
   </div>
 </div>
 
-<script>
-  function pagar(){ 
-    let title = document.getElementById('data-title').dataset.title;
-    let img = document.getElementById('data-img').dataset.img;
-    let price = document.getElementById('data-price').dataset.price;
-    let unit = document.getElementById('data-unit').dataset.unit;
-    // fetch('https://retojonatan-mp-commerce-nodejs.herokuapp.com/payment')
-    /*fetch('http://localhost:3000/payment')
-  .then(response => response.json())
-  .then(data => console.log(data));
-*/
-
-var data = {
-    title,
-    img,
-    price,
-    unit,
-    id: 1234,
-}
-
-  fetch("http://localhost:3000/payment", {
-  method: "post",
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-
-  body: JSON.stringify(data)
-})
-.then( (response) => { 
-    console.log(response)
-})
-}
-</script>
