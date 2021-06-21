@@ -42,7 +42,7 @@ app.use(express.urlencoded({
 }))
 
 app.get("/", function (req, res) {
-  res.render("home",{page: "home"});
+  res.render("home");
 });
 
 app.get("/detail", function (req, res) {
