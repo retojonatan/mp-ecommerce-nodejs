@@ -1,14 +1,16 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
 var morgan = require('morgan');
+var path = require("path");
 
 //importamos el controller y service
 const PaymentController = require("./controllers/controller");
-const PaymentService = require("./controllers/service"); 
-// SDK de Mercado Pago
-/*const mercadopago = require('mercadopago');
+const PaymentService = require("./controllers/service");
 
-var itegrator_id = "dev_24c65fb163bf11ea96500242ac130004"
+// SDK de Mercado Pago
+const mercadopago = require('mercadopago');
+
+var itegrator_id = "dev_24c65fb163bf11ea96500242ac130004";
 
 let vendedor = {
   collector_id: "469485398",
@@ -20,7 +22,7 @@ let vendedor = {
 mercadopago.configure({
   access_token: vendedor.access_token
 });
-*/
+
 var port = process.env.PORT || 3000;
 
 var app = express();
@@ -28,11 +30,11 @@ var app = express();
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 
 app.use(express.static("assets"));
 
-app.use("/assets", express.static(__dirname + "/assets"));
+app.use("/assets", express.static(path.join(__dirname , "/assets")));
 
 app.use(express.json())
 app.use(express.urlencoded({
@@ -47,7 +49,7 @@ app.get("/detail", function (req, res) {
   req.query.page= "item"
   res.render("detail", req.query);
 });
-
+/*
 // Instanciamos el pago
 // (Permitimos que el controller pueda usar el service)
 const PaymentInstance = new PaymentController(new PaymentService()); 
@@ -59,5 +61,6 @@ app.post("/webhook", (req, res) => PaymentInstance.webhook(req, res));
 app.post("/create_preference", function (req, res) {
   PaymentInstance.getMercadoPagoLink(req, res);
 });
+*/
 
 app.listen(port);
