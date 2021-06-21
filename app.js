@@ -1,8 +1,8 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
-// var morgan = require('morgan');
-// var path = require("path");
-/*
+var morgan = require('morgan');
+var path = require("path");
+
 //importamos el controller y service
 const PaymentController = require("./controllers/controller");
 const PaymentService = require("./controllers/service");
@@ -22,7 +22,7 @@ let vendedor = {
 mercadopago.configure({
   access_token: vendedor.access_token
 });
-*/
+
 
 var port = process.env.PORT || 3000;
 
@@ -31,7 +31,7 @@ var app = express();
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
-//app.use(morgan('dev'));
+app.use(morgan('dev'));
 
 app.use(express.static("assets"));
 
@@ -44,7 +44,7 @@ app.use(express.urlencoded({
 }))
 
 app.get("/", function (req, res) {
-  res.render("home");
+  res.render("home",{page: "home"});
 });
 
 app.get("/detail", function (req, res) {
