@@ -6,20 +6,15 @@ class PaymentController {
     const { title, price, unit, img } = req.body;
     try {
       const checkout = await this.paymentService.createPaymentMercadoPago(
-        title, // nombre del producto o servicio
-        price, //precio del producto o servicio
-        unit,  //cantidad que estamos vendiendo
-        img  // imagen de referencia del producto o servicio
+        title,
+        price,
+        unit,
+        img
       );
       
       return res.redirect(checkout.init_point); 
-     //si es exitoso los llevamos a la url de Mercado Pago
-
-      return res.json({url: checkout.init_point})
-     // o si queres devolver la url al front 
 
     } catch (err) { 
-      // si falla devolvemos un status 500
       return res.status(500).json({
         error: true,
         msg: "Hubo un error con Mercado Pago"

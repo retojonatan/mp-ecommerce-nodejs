@@ -1,8 +1,5 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
-// var morgan = require('morgan');
-
-//importamos el controller y service
 const PaymentController = require("./controllers/controller");
 const PaymentService = require("./controllers/service");
 
@@ -11,8 +8,6 @@ var app = express();
 
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
-
-//app.use(morgan('dev'));
 
 app.use(express.static("assets"));
 
@@ -31,14 +26,10 @@ app.get("/detail", function (req, res) {
   res.render("detail", req.query);
 });
 
-// Instanciamos el pago
-// (Permitimos que el controller pueda usar el service)
 const PaymentInstance = new PaymentController(new PaymentService()); 
 
-//webhook del pago
 app.post("/webhook", (req, res) => PaymentInstance.webhook(req, res));
 
-//obtener preferencia de mp
 app.post("/create_preference", function (req, res) {
   PaymentInstance.getMercadoPagoLink(req, res);
 });
