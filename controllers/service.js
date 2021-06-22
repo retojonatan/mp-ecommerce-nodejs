@@ -29,17 +29,17 @@ class PaymentService {
         description: "Dispositivo móvil de Tienda e-commerce", 
         picture_url:  "https://retojonatan-mp-commerce-nodejs.herokuapp.com/"+ img, 
         // picture_url:  path.join(__dirname, img), 
-        category_id: "1234", 
-        quantity: parseInt(unit), 
+        category_id: "1234",
+        quantity: parseInt(unit),
         // id de la moneda, que tiene que ser en ISO 4217
         currency_id: "ARS",
-        unit_price: parseFloat(price) 
+        unit_price: parseFloat(price)
       }
     ];  
      
      const preferences = {
       items, 
-      external_reference: "Tienda e-commerce",
+      external_reference: "retojonatanuy@gmail.com",
       payer: { 
         // información del comprador, si estan en producción tienen que traerlos del request
         //(al igual que hicimos con el precio del item) 
