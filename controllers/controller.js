@@ -11,7 +11,7 @@ class PaymentController {
         unit,  //cantidad que estamos vendiendo
         img  // imagen de referencia del producto o servicio
       );
-
+      
       return res.redirect(checkout.init_point); 
      //si es exitoso los llevamos a la url de Mercado Pago
 
@@ -27,7 +27,7 @@ class PaymentController {
     }
   }
 
-  webhook(req, res) { 
+  async webhook(req, res) { 
     if (req.method === "POST") {
       let body = "";
       req.on("data", chunk => {
@@ -38,7 +38,7 @@ class PaymentController {
         res.end("ok");
       });
     }
-    return res.status(200); 
+    return res.status(201);
   }
 }
 
