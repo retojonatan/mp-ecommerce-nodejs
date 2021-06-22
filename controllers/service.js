@@ -74,7 +74,7 @@ class PaymentService {
         // url a la que va a redireccionar
         success: "https://retojonatan-mp-commerce-nodejs.herokuapp.com/success", 
         pending: "https://retojonatan-mp-commerce-nodejs.herokuapp.com/pending",
-        failure: "https://retojonatan-mp-commerce-nodejs.herokuapp.com/error"
+        failure: "https://retojonatan-mp-commerce-nodejs.herokuapp.com/failure"
       }, 
       notification_url: "https://retojonatan-mp-commerce-nodejs.herokuapp.com/webhook", 
       // declaramos nuestra url donde recibiremos las notificaciones
